@@ -8,3 +8,8 @@
 ## Tutorials
 
  - [TUT2](https://github.com/mridsole/ELEC2104/blob/master/TUT2/TUT2.ipynb)
+
+
+## Labs
+
+ - [LAB0](https://github.com/mridsole/ELEC2104/blob/master/LAB0/LAB0.ipynb)
