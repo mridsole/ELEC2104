@@ -1,5 +1,7 @@
 # ELEC2104 Stuff
 
+Most plots (the interactive ones) won't render using GitHub's viewer, so use the links below:
+
 ## Homework
 
  - [HW1](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/HW1/HW1.ipynb)
