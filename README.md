@@ -3,6 +3,7 @@
 ## Homework
 
  - [HW1](https://github.com/mridsole/ELEC2104/blob/master/HW1/HW1.ipynb)
+ - [HW2](https://github.com/mridsole/ELEC2104/blob/master/HW2/HW2.ipynb)
 
 
 ## Tutorials
