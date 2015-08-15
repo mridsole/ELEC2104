@@ -18,4 +18,4 @@ Most plots (the interactive ones) won't render using GitHub's viewer, so use the
 ## Labs
 
  - [LAB0](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/LAB0/LAB0.ipynb)
- - [LAB0](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/LAB1/LAB1.ipynb)
+ - [LAB1](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/LAB1/LAB1.ipynb)
