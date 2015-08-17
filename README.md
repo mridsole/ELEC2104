@@ -13,6 +13,7 @@ Most plots (the interactive ones) won't render using GitHub's viewer, so use the
 
  - [TUT2](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/TUT2/TUT2.ipynb)
  - [TUT3](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/TUT3/TUT3.ipynb)
+ - [TUT4](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/TUT4/TUT4.ipynb)
 
 
 ## Labs
