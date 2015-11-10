@@ -2,6 +2,10 @@
 
 Most plots (the interactive ones) won't render using GitHub's viewer, so use the links below:
 
+## Sample Exam And Solutions
+ - [Exam](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/SampleExam/SampleExam.ipynb)
+ - [Solutions](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/SampleExam/SampleExamSolutions.ipynb)
+
 ## Homework
 
  - [HW1](http://nbviewer.ipython.org/github/mridsole/elec2104/blob/master/HW1/HW1.ipynb)
