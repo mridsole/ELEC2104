@@ -686,21 +686,93 @@ $$ T(s) = \frac {sL} {\frac {1} {sC} (LCs^2 + RCs + 1)} = \frac {s^2} {s^2 + \fr
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="13.-Transistor-Circuits---Small-Signal-Analysis">13. Transistor Circuits - Small Signal Analysis<a class="anchor-link" href="#13.-Transistor-Circuits---Small-Signal-Analysis">&#182;</a></h3><p>The small signal model circuit is:</p>
-<p><img src='Q13_sol.png' width=50%  /></p>
+<p><img src='Q13_sol.png' width=40%  /></p>
 <p><strong>(a)</strong> The small signal input impedance</p>
 <p>The nodal analysis equations are messy to solve, so consider the thevenin resistance of just the second circuit (circled in blue).</p>
 <p>We get:</p>
 $$ i_{in} = \frac {v_{in}} {r_{\pi 2}} + g_{m2} v_{in} $$<p>So:</p>
 $$ R_{in}' = \frac {r_{\pi 2}} {\beta_2 + 1} $$<p>The overall circuit is now:</p>
-<p><img src='Q13_sol3.png' width=45% /></p>
+<p><img src='Q13_sol_3.png' width=45% /></p>
 <p>With nodal analysis equation:</p>
 $$ \frac {v_{in} - v_1} {r_{\pi 1}} + g_{m1} (v_{in} - v_1) = \frac {v_1} {R_E + R_{in}'} $$<p>So that:</p>
 $$ v_1 = \frac { \frac{1}{r_{\pi 1}} + g_{m1} } {\frac{1}{r_{\pi 1}} + g_{m1} + \frac{1}{R_E + R_{in}'}} \cdot v_{in} = \frac {\beta_1 + 1} {\beta_1 + 1 + \frac{r_{\pi 1}}{R_E + R_{in}'}} \cdot v_{in} $$<p>So:</p>
-$$ i_{in} = \frac {v_{in}} {r_{\pi 1}} (1 - \frac {\beta_1 + 1} {\beta_1 + 1 + \frac {r_{\pi 1}} {R_E + R_{in}'}}) = \frac {v_{in}} {(\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1}}$$$$ R_{in} = \frac {v_{in}} {i_{in}} = (\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1} $$<p><br>
+$$ i_{in} = \frac{v_{in}}{R_1} + \frac {v_{in}} {r_{\pi 1}} (1 - \frac {\beta_1 + 1} {\beta_1 + 1 + \frac {r_{\pi 1}} {R_E + R_{in}'}}) = \frac {(R_1 + 1)v_{in}} {R_1[(\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1}]}$$$$ R_{in} = \frac {v_{in}} {i_{in}} = \frac {R_1} {R_1 + 1} [(\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1}] $$<p>If we assume $R_1$ is large, then:</p>
+$$ R_{in} = (\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1} $$<p>where $R_{in}'$ is the impedance of the second transistor, seen from the emitter:</p>
+$$ R_{in}' = \frac {r_{\pi 2}} {\beta_2 + 1} $$<p><br>
 <strong>(b)</strong> The small signal output impedance</p>
+<p>We can still replace Q2 with the thevenin resistance we found above. Now, we should do the same for the region shown:</p>
+<p><img src='Q13_sol4.png' width=40% /></p>
+<p>So, for just the blue region (with the input indicated by the arrow) we have:</p>
+$$ i_{in} = \frac {v_1 - v_2} {r_{\pi 1}} - g_{m1} (v_2 - v_1) = (v_1 - v_2)(\frac{1}{r_{\pi 1}} + g_{m1}) $$<p>and</p>
+$$ \frac {v_1 - v_2} {r_{\pi 1}} = \frac {v_2} {R_1} \implies v_2 = \frac {R_1} {r_{\pi 1} + R_1} v_1 $$<p>So:</p>
+$$ i_{in} = (1 - \frac {R_1} {r_{\pi 1} + R_1})(\beta_1 + 1) \frac {1} {r_{\pi 1}} v_1 $$<p>So that the equivalent resistance is:</p>
+$$ R'' = \frac {r_{\pi 1}} {(1 - \frac {R_1} {r_{\pi 1} + R_1})(\beta_1 + 1)} $$<p>The circuit is now:</p>
+<p><img src='Q13_sol5.png' width=40% /></p>
+<p>So the output impedance is:</p>
+$$ R_{out} = (R'' + R_E) \: || \: R_{in}' $$<p><strong>(c)</strong> The small signal gain</p>
+<p>We can obtain two equations:</p>
+$$ \frac {v_{in} - v_1} {r_{\pi 1}} + g_{m1} (v_{in} - v_1) = \frac {v_1 - v_{out}} {R_E} $$<p>and</p>
+$$v_{out} = \frac {1} {R_{in}'} (\frac {v_{in} - v_1} {r_{\pi 1}} + g_{m1} (v_{in} - v_1)) $$<p>solve these with SymPy (the method is the same by hand, just tedious)</p>
+<p><br></p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">v_in</span><span class="p">,</span> <span class="n">v_out</span><span class="p">,</span> <span class="n">v_1</span><span class="p">,</span> <span class="n">r_pi1</span><span class="p">,</span> <span class="n">g_m1</span><span class="p">,</span> <span class="n">R_E</span><span class="p">,</span> <span class="n">R_in_p</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s">&#39;v_in v_out v_1 r_pi_1 g_m1 R_E R</span><span class="se">\&#39;</span><span class="s">_in&#39;</span><span class="p">)</span>
+
+<span class="n">eqn1</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_in</span> <span class="o">-</span> <span class="n">v_1</span><span class="p">)</span> <span class="o">/</span> <span class="n">r_pi1</span> <span class="o">+</span> <span class="n">g_m1</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_in</span> <span class="o">-</span> <span class="n">v_1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">v_1</span> <span class="o">-</span> <span class="n">v_out</span><span class="p">)</span> <span class="o">/</span> <span class="n">R_E</span>
+<span class="n">eqn2</span> <span class="o">=</span> <span class="n">v_out</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">R_in_p</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">v_in</span> <span class="o">-</span> <span class="n">v_1</span><span class="p">)</span> <span class="o">/</span> <span class="n">r_pi1</span> <span class="o">+</span> <span class="n">g_m1</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_in</span> <span class="o">-</span> <span class="n">v_1</span><span class="p">))</span>
+
+<span class="n">solns</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="n">eqn1</span><span class="p">,</span> <span class="n">eqn2</span><span class="p">],</span> <span class="p">[</span><span class="n">v_out</span><span class="p">,</span> <span class="n">v_1</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">solns</span><span class="p">)</span>
+
+<span class="c"># divide by v_in and simplify:</span>
+<span class="n">gain</span> <span class="o">=</span> <span class="p">(</span><span class="n">solns</span><span class="p">[</span><span class="n">v_out</span><span class="p">]</span> <span class="o">/</span> <span class="n">v_in</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s">&#39;The gain is: &#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">gain</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_latex output_subarea ">
+$$\left \{ v_{1} : \frac{v_{in} \left(R'_{in} R_{E} + 1\right) \left(g_{m1} r_{\pi 1} + 1\right)}{R'_{in} \left(R_{E} g_{m1} r_{\pi 1} + R_{E} + r_{\pi 1}\right) + g_{m1} r_{\pi 1} + 1}, \quad v_{out} : \frac{v_{in} \left(g_{m1} r_{\pi 1} + 1\right)}{R'_{in} R_{E} g_{m1} r_{\pi 1} + R'_{in} R_{E} + R'_{in} r_{\pi 1} + g_{m1} r_{\pi 1} + 1}\right \}$$
+</div>
+
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The gain is: 
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_latex output_subarea ">
+$$\frac{g_{m1} r_{\pi 1} + 1}{R'_{in} R_{E} g_{m1} r_{\pi 1} + R'_{in} R_{E} + R'_{in} r_{\pi 1} + g_{m1} r_{\pi 1} + 1}$$
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
