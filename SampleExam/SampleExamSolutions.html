@@ -688,9 +688,7 @@ $$ T(s) = \frac {sL} {\frac {1} {sC} (LCs^2 + RCs + 1)} = \frac {s^2} {s^2 + \fr
 <h3 id="13.-Transistor-Circuits---Small-Signal-Analysis">13. Transistor Circuits - Small Signal Analysis<a class="anchor-link" href="#13.-Transistor-Circuits---Small-Signal-Analysis">&#182;</a></h3><p>The small signal model circuit is:</p>
 <p><img src='Q13_sol.png' width=50%  /></p>
 <p><strong>(a)</strong> The small signal input impedance</p>
-<p>The nodal analysis equations are:</p>
-$$ \frac {v_{in} - v_1} {r_{\pi 1}} + g_{m1}(v_{in} - v_1) = \frac {v_1 - v_2} {R_E} $$$$ \frac {v_1 - v_2} {R_E} = \frac {v_2} {r_{\pi 2}} + g_{m2} v_2 $$<p>These are messy to solve, so consider the thevenin resistance of just the second circuit:</p>
-<p><img src='Q13_sol2.png' width=55% /></p>
+<p>The nodal analysis equations are messy to solve, so consider the thevenin resistance of just the second circuit (circled in blue).</p>
 <p>We get:</p>
 $$ i_{in} = \frac {v_{in}} {r_{\pi 2}} + g_{m2} v_{in} $$<p>So:</p>
 $$ R_{in}' = \frac {r_{\pi 2}} {\beta_2 + 1} $$<p>The overall circuit is now:</p>
@@ -698,7 +696,9 @@ $$ R_{in}' = \frac {r_{\pi 2}} {\beta_2 + 1} $$<p>The overall circuit is now:</p
 <p>With nodal analysis equation:</p>
 $$ \frac {v_{in} - v_1} {r_{\pi 1}} + g_{m1} (v_{in} - v_1) = \frac {v_1} {R_E + R_{in}'} $$<p>So that:</p>
 $$ v_1 = \frac { \frac{1}{r_{\pi 1}} + g_{m1} } {\frac{1}{r_{\pi 1}} + g_{m1} + \frac{1}{R_E + R_{in}'}} \cdot v_{in} = \frac {\beta_1 + 1} {\beta_1 + 1 + \frac{r_{\pi 1}}{R_E + R_{in}'}} \cdot v_{in} $$<p>So:</p>
-$$ i_{in} = \frac {v_{in}} {r_{\pi 1}} (1 - \frac {\beta_1 + 1} {\beta_1 + 1 + \frac {r_{\pi 1}} {R_E + R_{in}'}}) = \frac {v_{in}} {(\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1}}$$$$ R_{in} = \frac {v_{in}} {i_{in}} = (\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1} $$
+$$ i_{in} = \frac {v_{in}} {r_{\pi 1}} (1 - \frac {\beta_1 + 1} {\beta_1 + 1 + \frac {r_{\pi 1}} {R_E + R_{in}'}}) = \frac {v_{in}} {(\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1}}$$$$ R_{in} = \frac {v_{in}} {i_{in}} = (\beta_1 + 1)(R_E + R_{in}') + r_{\pi 1} $$<p><br>
+<strong>(b)</strong> The small signal output impedance</p>
+
 </div>
 </div>
 </div>
